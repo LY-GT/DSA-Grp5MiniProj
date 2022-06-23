@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 
+
 //SpStudent functions
 SpStudent::SpStudent(string studentinfomation)
 {
@@ -26,6 +27,7 @@ double SpStudent::getGPA()
 {
 	return GPA;
 }
+
 
 //list functions
 list::list(string filepath)

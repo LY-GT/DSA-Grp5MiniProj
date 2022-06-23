@@ -7,20 +7,22 @@
 #include "SpStudent.h"
 using namespace std;
 
-/*void studentfileread()
+/*void fileinput()
 {
-    vector<char> filepath;
-    ifstream studentpath(filepath);
-
-    string contents;
-    while (!student.eof())
+    char filename[100];
+    char defaultpath[100]{ d,e,f,a,u,l,t };
+    cout << "Enter a file path, if you want to use the default path, type default" << endl;
+    cout << "File name: ";
+    cin.getline(filename, 99);
+    if filename = defaultpath
     {
-        
-
-        SpStudent s(contents);
-        students.push_back(s);
+        list list("c:\\Users\\USER\\Documents\\studentinfo.txt");
     }
-    studentpath.close();
+    else
+    {
+        list list(filename);
+    }
+    //Ive not gotten this to work yet, if you want to attempt fixing this go ahead, I cant figure out the issue yet
 }*/
 
 void test(SpStudent student)
@@ -30,11 +32,16 @@ void test(SpStudent student)
     cout << "GPA: " << student.getGPA() << endl;
     cout << "Full name: " << student.getname() << endl;
     cout << endl;
+    //this is a test for file reading, use it if you want to, 
+    //but look in SpStudent.h first to // the private part of the list class
 }
 
 int main()
 {
-    list list("c:\\Users\\USER\\Documents\\studentinfo.txt");
+    list list("C:\\Users\\USER\\Documents\\studentinfo.txt");
+    //when pathing to your file, use double \ for every path. Its a thing with fstream idk.
+    // so if your file is in C:\Users\Name\Documents, type it as C:\\Users\\Name\\Documents\\(filename).txt
+    //fileinput();
     for (SpStudent s : list.students)
         test(s);
 

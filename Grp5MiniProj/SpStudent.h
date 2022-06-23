@@ -20,15 +20,15 @@ private:
 	string firstname;
 	string lastname;
 	double GPA;
-	char choice[3];
-	int win[3];
+	char choice[3];//I have not figured out how to deal with choices
+	int win[3];//or wins yet, feel free to experiment
 };
 
 class list {
 public:
 	list(string filepath);
 
-//private:
+private://You can private this if you want to test if your pathing is working
 	vector<SpStudent> students;
 
 };
