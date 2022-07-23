@@ -18,7 +18,7 @@ void test(student_class student_class) {
 	cout << student_class.getChoice3() << " ";
 	cout << student_class.getWinchoice1() << " ";
 	cout << student_class.getWinchoice2() << " ";
-	cout << student_class.getWinchoice3() << " ";
+	cout << student_class.getWinchoice3() << " " << endl;
 
 }
 
@@ -29,18 +29,17 @@ int main() {
 	//change the above if you want to change ^^^
 
 //*********************************
-	// I made 2 versions to find the 1st choice, LIST and STACK+VECTOR
-	// LIST is better I feel cause got iterator compared to stack.
-	// Please comment the one you are not using so you don't confuse yourself
-	// Feel free to edit anything, original code will still be with me
+	// I made 2 versions to find the 1st choice, LIST and VECTOR
+	// Both are valid. I don't know which is better. 
+	// Pick the one that works :D
 
 //======================================================
 //  LIST VERSION OF FINDING 1ST CHOICE
 	for (student_class s : filelist.find1stClub_list(filelist, 'g'))
 		test(s);
 
-	list<student_class> x = filelist.find1stClub_list(filelist, 'g');
-	//list<student_class> chess_list=filelist.replaceWins(x,'g'); //NOT DONE
+	list<student_class> chesslist_1 = filelist.find1stClub_list(filelist, 'g');
+	list<student_class> chess_list_wins = filelist.replaceWins(chesslist_1, 'g'); //NOT DONE
 	//^^Can combine these 2 together tbh, but it will be messy :D^^
 
 	//After making a list of 1st choice and 3 winning records people
@@ -48,7 +47,7 @@ int main() {
 	//we just made from the whole population list.
 
 
-	//list<student_class> remainder = filelist.remainding(filelist, chess_list);
+	list<student_class> remainder = filelist.remainding(filelist, chess_list_wins);
 	//^^This is to find the remainding people with no given club^^ NOT DONE
 
 
@@ -57,23 +56,21 @@ int main() {
 
 
 //===========================================================
-// 	VECTOR + STACK VERSION OF FINDING 1ST CHOICE
+// 	VECTOR VERSION OF FINDING 1ST CHOICE
 
 	//Prints those who have chess as 1st choice (VECTOR)
 	for (student_class s : filelist.find1stClub(filelist, 'g'))
 		test(s);
 
-	//1. Makes a vector of people with chess 
-	//2. Removes extra people, turns vector into stack
-	stack<student_class> v = filelist.sorter(filelist.find1stClub(filelist, 'g'), 2);
 
-	//To check the stack is working normally.
-	while (!v.empty())
-	{
-		student_class s = v.top();
-		filelist.printInfo(s);
-		v.pop();
-	}
+	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'g');
+	vector<student_class> chesslist_wins = filelist.replaceWins_vector(chesslist_nowins, 'g');
+	vector<student_class> remainder = filelist.remainding_vector(filelist, chesslist_wins);
+
+
+
+
+
 
 	///////////////////////////////////////////////////////////
 

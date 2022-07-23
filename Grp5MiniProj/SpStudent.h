@@ -48,10 +48,12 @@ public:
 
 	vector<student_class> students; //vector
 
-	//STACK + VECTOR FUNCTIONS
+	//VECTOR FUNCTIONS
 	vector<student_class> find1stClub(studentlist, char);
-	stack < student_class>sorter(vector<student_class>, int);
-	void printInfo(student_class);
+	vector<student_class> replaceWins_vector(vector<student_class>, char);
+	vector<student_class> remainding_vector(studentlist, vector<student_class>);
+
+	void printInfo(student_class);//stack print, not in use.
 
 	//Chose to public the functions cause I'm lazy to do 
 	//work around on if they were private lol

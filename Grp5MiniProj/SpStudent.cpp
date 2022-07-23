@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <stack>
 #include <list>
-#include "Spstudent.h"
+#include "SpStudent.h"
 
 using namespace std;
 
@@ -106,9 +106,8 @@ list<student_class> studentlist::replaceWins(list<student_class> x, char club)
 	// 
 	//Check students with winning and replace(or not)/slot in(if got space)
 
-
-
 }
+
 
 list<student_class> studentlist::remainding(studentlist studentlist,
 	list<student_class> firstPickandWins)
@@ -127,9 +126,8 @@ list<student_class> studentlist::remainding(studentlist studentlist,
 }
 
 //==================================================================================
-// VECTOR + STACK VERSION OF finding 1st choice and resizing it
+// VECTOR VERSION OF finding 1st choice and resizing it
 // Put everyone who has (insert club here) as 1st choice
-//I don't know how to make it stop counting w/ vector... had to use stack
 vector<student_class> studentlist::find1stClub(studentlist list, char club) {
 
 	vector<student_class> x;
@@ -143,26 +141,37 @@ vector<student_class> studentlist::find1stClub(studentlist list, char club) {
 		}
 	}
 
-	return x;
-
-}
-
-//Removes the extra people and converts vector into stack
-//Why stack?
-//Since it is sorted by GPA, the top people are people with lowest GPA
-//Hence if they have to be replaced by winning records people, lowest GPA will be
-//replaced, however when stack is made, order is (top)LOWEST to HIGHEST(bottom)
-stack<student_class> studentlist::sorter(vector<student_class> find1stChess, int count) {
-	stack<student_class> x;
-
-	for (int i = 0; i != count; i++)
-	{
-		x.push(find1stChess.at(i));
+	if (x.size() != 2) {
+		x.pop_back();
 	}
-
 	return x;
+}
+
+vector<student_class> studentlist::replaceWins_vector(vector<student_class> x, char club)
+{
+	//check if current list have less than 3 students with winning records
+	//How do define winning record? with only 0 and 1 (No or Yes)
+	//or count how many competitions they have won? (Number)
+	//The latter will be more difficult.
+	// 
+	//Check students with winning and replace(or not)/slot in(if got space)
+
 
 }
+
+vector<student_class> studentlist::remainding_vector(studentlist studentlist,
+	vector<student_class> firstPickandWins)
+{
+	vector<student_class> returning;
+	vector<student_class>::iterator it;
+
+	//idk somehow just get the remaining students with no clubs
+
+
+	return returning;
+
+}
+
 //=================================================================================
 
 
