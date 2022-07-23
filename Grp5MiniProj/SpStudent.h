@@ -1,34 +1,69 @@
 #pragma once
+
+#include <iostream>
+#include <vector>
 #include <string>
 #include <fstream>
-#include <sstream>
-#include <vector>
+#include <stack>
+#include <list>
+
 using namespace std;
-//header file for class SpStudent
 
-class SpStudent {
+/*Stores data of students in a object*/
+class student_class {
 public:
-	//SpStudent();
-	SpStudent(string studentinfomation);
-	string getfirstname();
-	string getlastname();
-	string getname();
-	double getGPA();
+	student_class(string studentinfomation);
 
+	string getFirst_name();
+	string getLast_name();
+	double getGPA();
+	char getChoice1();
+	char getChoice2();
+	char getChoice3();
+	char getWinchoice1();
+	char getWinchoice2();
+	char getWinchoice3();
 
 private:
-	string firstname;
-	string lastname;
+	string first_name;
+	string last_name;
 	double GPA;
-	char choice[3];//I have not figured out how to deal with choices
-	int win[3];//or wins yet, feel free to experiment
+	char choice1;
+	char choice2;
+	char choice3;
+	char winchoice1;
+	char winchoice2;
+	char winchoice3;
+
+
+
+
+
 };
 
-class list {
+/*Used to call functions regarding the whole vector/stack of students(objects)*/
+class studentlist {
 public:
-	list(string filepath);
+	studentlist(string filepath);
 
-private://You can private this if you want to test if your pathing is working
-	vector<SpStudent> students;
+	vector<student_class> students; //vector
+
+	//STACK + VECTOR FUNCTIONS
+	vector<student_class> find1stClub(studentlist, char);
+	stack < student_class>sorter(vector<student_class>, int);
+	void printInfo(student_class);
+
+	//Chose to public the functions cause I'm lazy to do 
+	//work around on if they were private lol
+
+	//LIST FUNCTIONS
+	list<student_class> find1stClub_list(studentlist, char);
+	list<student_class> replaceWins(list<student_class>, char);
+	list<student_class> remainding(studentlist, list<student_class>);
+
 
 };
+
+
+
+
