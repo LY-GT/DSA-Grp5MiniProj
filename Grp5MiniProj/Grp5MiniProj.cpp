@@ -35,6 +35,7 @@ int main() {
 
 //======================================================
 //  LIST VERSION OF FINDING 1ST CHOICE
+	/*
 	for (student_class s : filelist.find1stClub_list(filelist, 'g'))
 		test(s);
 
@@ -52,7 +53,7 @@ int main() {
 
 
 
-
+	*/
 
 
 //===========================================================
@@ -64,8 +65,8 @@ int main() {
 
 
 	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'g');
-	vector<student_class> chesslist_wins = filelist.replaceWins_vector(chesslist_nowins, 'g');
-	vector<student_class> remainder = filelist.remainding_vector(filelist, chesslist_wins);
+	//vector<student_class> chesslist_wins = filelist.replaceWins_vector(chesslist_nowins, 'g');
+	//vector<student_class> remainder = filelist.remainding_vector(filelist, chesslist_wins);
 
 
 

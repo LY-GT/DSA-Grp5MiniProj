@@ -96,7 +96,7 @@ list<student_class> studentlist::find1stClub_list(studentlist listStudent, char 
 }
 //*************************ROUND 2?**********************************
 //You can redo this tbh lol
-
+/*
 list<student_class> studentlist::replaceWins(list<student_class> x, char club)
 {
 	//check if current list have less than 3 students with winning records
@@ -124,6 +124,7 @@ list<student_class> studentlist::remainding(studentlist studentlist,
 	return returning;
 
 }
+*/
 
 //==================================================================================
 // VECTOR VERSION OF finding 1st choice and resizing it
@@ -146,7 +147,7 @@ vector<student_class> studentlist::find1stClub(studentlist list, char club) {
 	}
 	return x;
 }
-
+/*
 vector<student_class> studentlist::replaceWins_vector(vector<student_class> x, char club)
 {
 	//check if current list have less than 3 students with winning records
@@ -171,6 +172,7 @@ vector<student_class> studentlist::remainding_vector(studentlist studentlist,
 	return returning;
 
 }
+*/
 
 //=================================================================================
 
