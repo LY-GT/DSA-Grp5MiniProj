@@ -7,6 +7,29 @@
 using namespace std;
 
 
+bool sortbyGPA(student_class& A, student_class& B) {
+
+	char club = 'g'; //sort does not allow carry value.
+
+	if (A.getChoice1() == club && B.getChoice1() == club)
+	{
+		return (A.getWinchoice1() > B.getWinchoice1());
+	}
+	else if (A.getChoice1() == club && B.getChoice1() == club)
+	{
+		return (A.getGPA() > B.getGPA());
+	}
+	else if (A.getChoice1() == club)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+
+}
+
 //TO PRINT OUTPUT
 void test(student_class student_class) {
 
@@ -35,12 +58,13 @@ int main() {
 
 //======================================================
 //  LIST VERSION OF FINDING 1ST CHOICE
-	/*
+
+/*
 	for (student_class s : filelist.find1stClub_list(filelist, 'g'))
 		test(s);
 
 	list<student_class> chesslist_1 = filelist.find1stClub_list(filelist, 'g');
-	list<student_class> chess_list_wins = filelist.replaceWins(chesslist_1, 'g'); //NOT DONE
+	list<student_class> chess_list_wins=filelist.replaceWins(chesslist_1,'g'); //NOT DONE
 	//^^Can combine these 2 together tbh, but it will be messy :D^^
 
 	//After making a list of 1st choice and 3 winning records people
@@ -51,15 +75,27 @@ int main() {
 	list<student_class> remainder = filelist.remainding(filelist, chess_list_wins);
 	//^^This is to find the remainding people with no given club^^ NOT DONE
 
+*/
 
 
-	*/
 
 
 //===========================================================
 // 	VECTOR VERSION OF FINDING 1ST CHOICE
-
 	//Prints those who have chess as 1st choice (VECTOR)
+
+	//SORT BY G CLUB, WIN RECORD THEN GPA.
+	sort(filelist.students.begin(), filelist.students.end(), sortbyGPA);
+
+	cout << "Sorted by g club, win choice then GPA\n";
+
+	for (int i = 0; i < filelist.students.size() - 1; i++)
+	{
+		student_class s = filelist.students.at(i);
+		test(s);
+	}
+	cout << "\n====================================\n\nOnly 2 vacancy\n";
+
 	for (student_class s : filelist.find1stClub(filelist, 'g'))
 		test(s);
 
@@ -73,17 +109,17 @@ int main() {
 
 
 
-	///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 
-		/*
-		//Prints the whole student list
-		for (int i = 0; i < filelist.students.size(); i++)
-		{
-			student_class s = filelist.students.at(i);
-			test(s);
-		}
-		*/
-		///////////////////////////////////////////////////////
+	/*
+	//Prints the whole student list
+	for (int i = 0; i < filelist.students.size(); i++)
+	{
+		student_class s = filelist.students.at(i);
+		test(s);
+	}
+	*/
+	///////////////////////////////////////////////////////
 
 
 	return 0;

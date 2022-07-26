@@ -87,7 +87,7 @@ list<student_class> studentlist::find1stClub_list(studentlist listStudent, char 
 
 		}
 	}
-	if (x.size() != 2) {
+	while (x.size() != 2) {
 		x.pop_back();
 	}
 
