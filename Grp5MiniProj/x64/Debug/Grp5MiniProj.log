@@ -1,6 +1,2 @@
 ﻿  Grp5MiniProj.cpp
-D:\SIngapore Poly\Data Structure and Algorithms\DSA Project V2\DSA-Grp5MiniProj\Grp5MiniProj\Grp5MiniProj.cpp(72,77): error C2660: 'studentlist::find1stClub': function does not take 2 arguments
-D:\SIngapore Poly\Data Structure and Algorithms\DSA Project V2\DSA-Grp5MiniProj\Grp5MiniProj\SpStudent.h(52,24): message : see declaration of 'studentlist::find1stClub'
-  vacancyfile.cpp
-  SpStudent.cpp
-  Generating Code...
+  Grp5MiniProj.vcxproj -> D:\SIngapore Poly\Data Structure and Algorithms\DSA Project V2\DSA-Grp5MiniProj\x64\Debug\Grp5MiniProj.exe

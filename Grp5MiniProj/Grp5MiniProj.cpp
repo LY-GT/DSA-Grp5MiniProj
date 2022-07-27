@@ -23,13 +23,19 @@ void test(student_class student_class) {
 
 }
 
+//TO PRINT CONTENTS OF VACANCYFILE
+void print(Vacancies Vacancies) {
+	cout << Vacancies.getCCAName() << " ";
+	cout << Vacancies.getCCAID() << " ";
+	cout << Vacancies.getvacancies() << " " << endl;
+}
 
 
 int main() {
 
 	//student_class student_class("John Joe 3.0 g");
 	studentlist filelist("C:\\Users\\KalliasWolf\\Documents\\studentinfonew.txt");
-	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\CCAVacancy.txt");
+	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\Vacancy.txt");
 	//change the above if you want to change ^^^
 
 
@@ -67,29 +73,72 @@ int main() {
 	//Prints those who have chess as 1st choice (VECTOR)
 	for (student_class s : filelist.find1stClub(filelist, 'g',9))
 		test(s);
-
+	
 
 	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'g',9);
+
+	//cout << filelist.students.size() << endl;
+	//cout << vacancyfile.ccavacancy.size() << endl;
 	
 	//vector<student_class> chesslist_wins = filelist.replaceWins_vector(chesslist_nowins, 'g');
 	//vector<student_class> remainder = filelist.remainding_vector(filelist, chesslist_wins);
 
+	//Printing Out CCA + ID + Vacancies
+	cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
+	cout << "======================================================================" << endl;
+	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
+		Vacancies v = vacancyfile.ccavacancy.at(i);
+		print(v);
+	}
+
+	//Assigning vacancies to variables
+	int Dancingvacancies;
+	int Tennisvacancies;
+	int Gamingvacancies;
+	int Runningvacancies;
+	int swimmingvacancies;
+	int chessvacancies; 
+
+	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
+		Vacancies v = vacancyfile.ccavacancy.at(i);
+		if (v.getCCAID() == 'D') {
+			Dancingvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'T') {
+			Tennisvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'G') {
+			Gamingvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'R') {
+			Runningvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'S') {
+			swimmingvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'C') {
+			chessvacancies = v.getvacancies();
+		}
+	}
 
 
 
 
 
-	///////////////////////////////////////////////////////////
 
-		/*
+
+
+	
+
+		
 		//Prints the whole student list
-		for (int i = 0; i < filelist.students.size(); i++)
+		/*for (int i = 0; i < filelist.students.size(); i++)
 		{
 			student_class s = filelist.students.at(i);
 			test(s);
-		}
-		*/
-		///////////////////////////////////////////////////////
+		}*/
+		
+		
 
 
 	return 0;
