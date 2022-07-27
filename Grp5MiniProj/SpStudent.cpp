@@ -129,7 +129,7 @@ list<student_class> studentlist::remainding(studentlist studentlist,
 //==================================================================================
 // VECTOR VERSION OF finding 1st choice and resizing it
 // Put everyone who has (insert club here) as 1st choice
-vector<student_class> studentlist::find1stClub(studentlist list, char club) {
+vector<student_class> studentlist::find1stClub(studentlist list, char club, int VACANCY) {
 
 	vector<student_class> x;
 
@@ -142,7 +142,7 @@ vector<student_class> studentlist::find1stClub(studentlist list, char club) {
 		}
 	}
 
-	if (x.size() != 2) {
+	while (x.size() > VACANCY) { //Set '2' to vacancy size
 		x.pop_back();
 	}
 	return x;

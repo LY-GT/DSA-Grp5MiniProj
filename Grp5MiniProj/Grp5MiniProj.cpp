@@ -3,6 +3,7 @@
 #include <string>
 #include <algorithm>
 #include "SpStudent.h"
+#include "vacancyfile.h"
 
 using namespace std;
 
@@ -22,11 +23,15 @@ void test(student_class student_class) {
 
 }
 
+
+
 int main() {
 
 	//student_class student_class("John Joe 3.0 g");
-	studentlist filelist("C:\\Users\\jeann\\Documents\\studentinfo.txt");
+	studentlist filelist("C:\\Users\\KalliasWolf\\Documents\\studentinfonew.txt");
+	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\CCAVacancy.txt");
 	//change the above if you want to change ^^^
+
 
 //*********************************
 	// I made 2 versions to find the 1st choice, LIST and VECTOR
@@ -60,11 +65,12 @@ int main() {
 // 	VECTOR VERSION OF FINDING 1ST CHOICE
 
 	//Prints those who have chess as 1st choice (VECTOR)
-	for (student_class s : filelist.find1stClub(filelist, 'g'))
+	for (student_class s : filelist.find1stClub(filelist, 'g',9))
 		test(s);
 
 
-	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'g');
+	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'g',9);
+	
 	//vector<student_class> chesslist_wins = filelist.replaceWins_vector(chesslist_nowins, 'g');
 	//vector<student_class> remainder = filelist.remainding_vector(filelist, chesslist_wins);
 

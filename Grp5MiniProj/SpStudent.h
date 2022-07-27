@@ -49,7 +49,7 @@ public:
 	vector<student_class> students; //vector
 
 	//VECTOR FUNCTIONS
-	vector<student_class> find1stClub(studentlist, char);
+	vector<student_class> find1stClub(studentlist, char,int);
 	vector<student_class> replaceWins_vector(vector<student_class>, char);
 	vector<student_class> remainding_vector(studentlist, vector<student_class>);
 

@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Grp5MiniProj.cpp" />
+    <ClCompile Include="vacancyfile.cpp" />
     <ClCompile Include="SpStudent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="vacancyfile.h" />
     <ClInclude Include="SpStudent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
