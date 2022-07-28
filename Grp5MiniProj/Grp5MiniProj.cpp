@@ -36,6 +36,53 @@ int main() {
 	//student_class student_class("John Joe 3.0 g");
 	studentlist filelist("C:\\Users\\KalliasWolf\\Documents\\studentinfonew.txt");
 	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\Vacancy.txt");
+
+
+	//Assigning vacancies to variables
+	int Dancingvacancies;
+	int Tennisvacancies;
+	int Gamingvacancies;
+	int Runningvacancies;
+	int swimmingvacancies;
+	int chessvacancies;
+	string specialcca;
+	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
+		Vacancies v = vacancyfile.ccavacancy.at(i);
+		if (v.getCCAID() == 'D') {
+			Dancingvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'T') {
+			Tennisvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'G') {
+			Gamingvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'R') {
+			Runningvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'S') {
+			swimmingvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'C') {
+			chessvacancies = v.getvacancies();
+		}
+		if (v.getCCAID() == 'G') {
+			specialcca = v.getCCAName();
+		}
+	}
+	//cout << specialcca << endl;
+
+
+
+	//Print out contents of list
+	/*for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
+		Vacancies v = vacancyfile.ccavacancy.at(i);
+		print(v);
+	}*/
+
+
+
+
 	//change the above if you want to change ^^^
 
 
@@ -71,11 +118,16 @@ int main() {
 // 	VECTOR VERSION OF FINDING 1ST CHOICE
 
 	//Prints those who have chess as 1st choice (VECTOR)
-	for (student_class s : filelist.find1stClub(filelist, 'g',9))
-		test(s);
+	//for (student_class s : filelist.find1stClub(filelist, 'g',Gamingvacancies))
+		//test(s);
 	
 
-	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'g',9);
+	vector<student_class> gaminglist_nowins = filelist.find1stClub(filelist, 'g',Gamingvacancies);
+
+	for (int i = 0; i < gaminglist_nowins.size(); i++) {
+		student_class s = gaminglist_nowins.at(i);
+		test(s);
+	}
 
 	//cout << filelist.students.size() << endl;
 	//cout << vacancyfile.ccavacancy.size() << endl;
@@ -84,50 +136,8 @@ int main() {
 	//vector<student_class> remainder = filelist.remainding_vector(filelist, chesslist_wins);
 
 	//Printing Out CCA + ID + Vacancies
-	cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
-	cout << "======================================================================" << endl;
-	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
-		Vacancies v = vacancyfile.ccavacancy.at(i);
-		print(v);
-	}
-
-	//Assigning vacancies to variables
-	int Dancingvacancies;
-	int Tennisvacancies;
-	int Gamingvacancies;
-	int Runningvacancies;
-	int swimmingvacancies;
-	int chessvacancies; 
-
-	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
-		Vacancies v = vacancyfile.ccavacancy.at(i);
-		if (v.getCCAID() == 'D') {
-			Dancingvacancies = v.getvacancies();
-		}
-		if (v.getCCAID() == 'T') {
-			Tennisvacancies = v.getvacancies();
-		}
-		if (v.getCCAID() == 'G') {
-			Gamingvacancies = v.getvacancies();
-		}
-		if (v.getCCAID() == 'R') {
-			Runningvacancies = v.getvacancies();
-		}
-		if (v.getCCAID() == 'S') {
-			swimmingvacancies = v.getvacancies();
-		}
-		if (v.getCCAID() == 'C') {
-			chessvacancies = v.getvacancies();
-		}
-	}
-
-
-
-
-
-
-
-
+	//cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
+	//cout << "======================================================================" << endl;
 	
 
 		
