@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="Grp5MiniProj.cpp" />
     <ClCompile Include="SpStudent.cpp" />
+    <ClCompile Include="vacancyfile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpStudent.h" />
+    <ClInclude Include="vacancyfile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

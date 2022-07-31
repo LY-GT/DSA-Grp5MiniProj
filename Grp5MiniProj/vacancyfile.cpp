@@ -30,6 +30,9 @@ int Vacancies::getvacancies()
 {
 	return vacancies;
 }
+
+
+
 //Reading the file
 vacancieslist::vacancieslist(string pathtovacancies) {
 	ifstream vacancypath(pathtovacancies);

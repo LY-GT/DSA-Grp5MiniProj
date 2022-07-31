@@ -46,21 +46,30 @@ void test(student_class student_class) {
 
 }
 
+void print(Vacancies v) {
+
+	cout << v.getCCAName() << " ";
+	cout << v.getCCAID() << " ";
+	cout << v.getvacancies() << endl;
+
+}
+
 int main() {
 
 	//student_class student_class("John Joe 3.0 g");
 	studentlist filelist("C:\\Users\\jeann\\Documents\\studentinfo.txt");
-	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\Vacancy.txt");
-
+	vacancieslist vacancyfile("C:\\Users\\jeann\\Documents\\Vacancy.txt");
 
 	//Assigning vacancies to variables
 	int Dancingvacancies;
 	int Tennisvacancies;
 	int Gamingvacancies;
 	int Runningvacancies;
-	int swimmingvacancies;
+	int Swimmingvacancies;
 	int chessvacancies;
+
 	string specialcca;
+
 	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
 		Vacancies v = vacancyfile.ccavacancy.at(i);
 		if (v.getCCAID() == 'D') {
@@ -76,7 +85,7 @@ int main() {
 			Runningvacancies = v.getvacancies();
 		}
 		if (v.getCCAID() == 'S') {
-			swimmingvacancies = v.getvacancies();
+			Swimmingvacancies = v.getvacancies();
 		}
 		if (v.getCCAID() == 'C') {
 			chessvacancies = v.getvacancies();
@@ -88,13 +97,52 @@ int main() {
 	//cout << specialcca << endl;
 
 
-
 	//Print out contents of list
-	/*for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
+	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
 		Vacancies v = vacancyfile.ccavacancy.at(i);
 		print(v);
-	}*/
+	}
 
+	vector<student_class> dancinglist_nowins = filelist.find1stClub(filelist, 'd', Dancingvacancies);
+	vector<student_class> tennislist_nowins = filelist.find1stClub(filelist, 't', Tennisvacancies);
+	vector<student_class> gaminglist_nowins = filelist.find1stClub(filelist, 'g', Gamingvacancies);
+	vector<student_class> runninglist_nowins = filelist.find1stClub(filelist, 'r', Runningvacancies);
+	vector<student_class> swimminglist_nowins = filelist.find1stClub(filelist, 's', Swimmingvacancies);
+	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'c', chessvacancies);
+
+
+
+	//###Printing Out CCA + ID + Vacancies###
+	cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
+	cout << "======================================================================" << endl;
+
+	//Prints the whole student list
+	for (student_class s : filelist.students)
+		test(s);
+	
+
+	cout << "======================================================================" << endl;
+	
+
+	for (int i = 0; i < gaminglist_nowins.size(); i++) {
+		student_class s = gaminglist_nowins.at(i);
+		test(s);
+	}
+
+
+
+
+	cout << "======================================================================" << endl;
+	cout << filelist.students.size() << endl;
+	cout << vacancyfile.ccavacancy.size() << endl;
+
+	cout << "======================================================================" << endl;
+
+	
+	filelist.remainding_vector(filelist, gaminglist_nowins);
+	for (student_class s : filelist.students)
+		test(s);
+	
 
 
 
@@ -124,7 +172,7 @@ int main() {
 	list<student_class> remainder = filelist.remainding(filelist, chess_list_wins);
 	//^^This is to find the remainding people with no given club^^ NOT DONE
 
-*/
+
 
 
 
@@ -165,7 +213,7 @@ int main() {
 
 
 
-	return 0;
+
 
 
 	/*//===========================================================
@@ -212,5 +260,5 @@ int main() {
 
 	return 0;
 
-	*/
+	
 }
