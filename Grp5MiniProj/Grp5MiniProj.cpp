@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
 #include "SpStudent.h"
 #include "vacancyfile.h"
 
@@ -58,8 +60,8 @@ int main() {
 	int Tennisvacancies;
 	int Gamingvacancies;
 	int Runningvacancies;
-	int swimmingvacancies;
-	int chessvacancies;
+	int Swimmingvacancies;
+	int Chessvacancies;
 	string specialcca;
 	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
 		Vacancies v = vacancyfile.ccavacancy.at(i);
@@ -165,10 +167,10 @@ int main() {
 
 
 
-	return 0;
+	//return 0;
 
 
-	/*//===========================================================
+	/* //===========================================================
 	// 	VECTOR VERSION OF FINDING 1ST CHOICE(Jeanna's code)
 		//Prints those who have chess as 1st choice (VECTOR)
 
@@ -210,7 +212,53 @@ int main() {
 		///////////////////////////////////////////////////////
 
 
-	return 0;
+	//return 0; 
+	
 
-	*/
+
+	//=========================================================
+	//round 5 (Final round)
+
+
+	srand(time(0)); //This is to set a random seed for the RNG (random number generator)
+
+	int rng = rand() % 6; //randomly sets a number from 0 to 5
+	switch (rng)
+	{
+	case 0: //case when rolled for Dancing (number = 0)
+		//Code for assigning student into dancing (Not yet implimented)
+		Dancingvacancies -= 1;
+		break;
+
+	case 1: //case when rolled for Tennis (number = 1)
+		//Code for assigning student into tennis (Not yet implimented)
+		Tennisvacancies -= 1;
+		break;
+
+	case 2: //case when rolled for Gaming (number = 2)
+		//Code for assigning student into gaming (Not yet implimented)
+		Gamingvacancies -= 1;
+		break;
+
+	case 3: //case when rolled for Running (number = 3)
+		//Code for assigning student into running (Not yet implimented)
+		Runningvacancies -= 1;
+		break;
+
+	case 4: //case when rolled for Swimming (number = 4)
+		//Code for assigning student into swimming (Not yet implimented)
+		Swimmingvacancies -= 1;
+		break;
+
+	case 5: //case when rolled for Chess (number =5)
+		//Code for assigning student into chess (Not yet implimented)
+		Chessvacancies -= 1;
+		break;
+
+	default: //default case when RNG doesnt go right.. Should not be the case
+		cout << "Error in the random number genrator.. Please check Round 5's code" << endl;
+		break;
+
+	}
+
 }
