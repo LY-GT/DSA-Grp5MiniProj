@@ -107,7 +107,6 @@ vector<student_class> studentlist::find1stClub(studentlist list, char club, int 
 	while (x.size() > vacancy) { //Set '2' to vacancy size
 		x.pop_back();
 	}
-	x.resize(vacancy);
 
 	return x;
 }
@@ -128,28 +127,42 @@ vector<student_class> studentlist::replaceWins_vector(vector<student_class> x, c
 }
 */
 
-void studentlist::remainding_vector(studentlist& studentlist,
+vector <student_class> studentlist::remainding_vector(studentlist& studentlist,
 	vector<student_class> firstPickandWins) //Put an & just to transfer by reference
 {
-	vector<student_class> returning;
 	vector<student_class>::iterator it, student_it;
-
+	vector<student_class> v;
+	cout << "======================================================================" << endl;
 	for (student_it = firstPickandWins.begin(), it = studentlist.students.begin();
 		it < studentlist.students.end(); it++)
 	{
 		if (check_same(*it, *student_it))
 		{
+			v.push_back(*it);
+			cout << (*it).getFirst_name() << " ";
+			cout << (*it).getLast_name() << " " << endl;
 			studentlist.students.erase(it);
 			it = studentlist.students.begin();
-			if (student_it == firstPickandWins.end() - 1)
+
+			if (student_it + 1 == firstPickandWins.end())
+			{
+				cout << "BREAK";
 				break;
+			}
+
 			else
+			{
 				student_it++;
+				cout << "increase" << endl;
+
+			}
 		}
 
 	}
-
+	cout << "======================================================================" << endl;
+	return v;
 }
+
 //*************************ROUND 3**********************************
 //==================================================================================
 

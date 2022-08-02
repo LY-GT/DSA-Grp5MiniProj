@@ -1,36 +1,5 @@
-﻿  SpStudent.cpp
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xmemory(680,47): error C2512: 'student_class::student_class': no appropriate default constructor available
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xmemory(1655): message : see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,>(_Alloc &,_Objty *const )' being compiled
-          with
-          [
-              _Alloc=std::allocator<student_class>,
-              _Ty=student_class,
-              _Objty=student_class
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xmemory(1656): message : see reference to function template instantiation 'void std::_Default_allocator_traits<_Alloc>::construct<_Ty,>(_Alloc &,_Objty *const )' being compiled
-          with
-          [
-              _Alloc=std::allocator<student_class>,
-              _Ty=student_class,
-              _Objty=student_class
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xmemory(1833): message : see reference to function template instantiation 'void std::_Uninitialized_backout_al<std::allocator<student_class>>::_Emplace_back<>(void)' being compiled
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\xmemory(1849): message : see reference to function template instantiation 'void std::_Uninitialized_backout_al<std::allocator<student_class>>::_Emplace_back<>(void)' being compiled
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector(1426): message : see reference to function template instantiation 'student_class *std::_Uninitialized_value_construct_n<std::allocator<student_class>>(student_class *,unsigned __int64,_Alloc &)' being compiled
-          with
-          [
-              _Alloc=std::allocator<student_class>
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector(1438): message : see reference to function template instantiation 'void std::vector<student_class,std::allocator<student_class>>::_Resize<std::_Value_init_tag>(const unsigned __int64,const _Ty2 &)' being compiled
-          with
-          [
-              _Ty2=std::_Value_init_tag
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector(1438): message : see reference to function template instantiation 'void std::vector<student_class,std::allocator<student_class>>::_Resize<std::_Value_init_tag>(const unsigned __int64,const _Ty2 &)' being compiled
-          with
-          [
-              _Ty2=std::_Value_init_tag
-          ]
-C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\include\vector(1436): message : while compiling class template member function 'void std::vector<student_class,std::allocator<student_class>>::resize(const unsigned __int64)'
-C:\Users\jeann\OneDrive\Desktop\Singapore Poly stuff\Year 2 Sem 1\DSA - Data Structures & Algorithms\Project\Github\Grp5MiniProj\SpStudent.cpp(110): message : see reference to function template instantiation 'void std::vector<student_class,std::allocator<student_class>>::resize(const unsigned __int64)' being compiled
-C:\Users\jeann\OneDrive\Desktop\Singapore Poly stuff\Year 2 Sem 1\DSA - Data Structures & Algorithms\Project\Github\Grp5MiniProj\SpStudent.h(49): message : see reference to class template instantiation 'std::vector<student_class,std::allocator<student_class>>' being compiled
+﻿  Grp5MiniProj.cpp
+  SpStudent.cpp
+  vacancyfile.cpp
+  Generating Code...
+  Grp5MiniProj.vcxproj -> C:\Users\jeann\OneDrive\Desktop\Singapore Poly stuff\Year 2 Sem 1\DSA - Data Structures & Algorithms\Project\Github\x64\Debug\Grp5MiniProj.exe

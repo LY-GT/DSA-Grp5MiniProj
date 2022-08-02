@@ -7,29 +7,32 @@
 
 using namespace std;
 
+struct sortbyCLUB_WINS
+{
+	sortbyCLUB_WINS(char club) { this->club = club; }
+	bool operator () (student_class& A, student_class& B) {
 
-bool sortbyGPA(student_class& A, student_class& B) {
+		if (A.getChoice1() == club && B.getChoice1() == club)
+		{
+			return (A.getWinchoice1() > B.getWinchoice1());
+		}
+		else if (A.getChoice1() == club && B.getChoice1() == club)
+		{
+			return (A.getGPA() > B.getGPA());
+		}
+		else if (A.getChoice1() == club)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		//reference: -https://stackoverflow.com/questions/4066576/passing-a-parameter-to-a-comparison-function
+	}
+	char club;
 
-	char club = 'g'; //sort does not allow carry value.
-
-	if (A.getChoice1() == club && B.getChoice1() == club)
-	{
-		return (A.getWinchoice1() > B.getWinchoice1());
-	}
-	else if (A.getChoice1() == club && B.getChoice1() == club)
-	{
-		return (A.getGPA() > B.getGPA());
-	}
-	else if (A.getChoice1() == club)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-
-}
+};
 
 //TO PRINT OUTPUT
 void test(student_class student_class) {
@@ -97,50 +100,121 @@ int main() {
 	//cout << specialcca << endl;
 
 
+
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS('d'));
+	vector<student_class> dancinglist_nowins = filelist.find1stClub(filelist, 'd', Dancingvacancies);
+
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS('t'));
+	vector<student_class> tennislist_nowins = filelist.find1stClub(filelist, 't', Tennisvacancies);
+
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS('g'));
+	vector<student_class> gaminglist_nowins = filelist.find1stClub(filelist, 'g', Gamingvacancies);
+
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS('r'));
+	vector<student_class> runninglist_nowins = filelist.find1stClub(filelist, 'r', Runningvacancies);
+
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS('s'));
+	vector<student_class> swimminglist_nowins = filelist.find1stClub(filelist, 's', Swimmingvacancies);
+
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS('c'));
+	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'c', chessvacancies);
+
+
+	//###Printing Out CCA + ID + Vacancies###
+	cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
 	//Print out contents of list
 	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
 		Vacancies v = vacancyfile.ccavacancy.at(i);
 		print(v);
 	}
 
-	vector<student_class> dancinglist_nowins = filelist.find1stClub(filelist, 'd', Dancingvacancies);
-	vector<student_class> tennislist_nowins = filelist.find1stClub(filelist, 't', Tennisvacancies);
-	vector<student_class> gaminglist_nowins = filelist.find1stClub(filelist, 'g', Gamingvacancies);
-	vector<student_class> runninglist_nowins = filelist.find1stClub(filelist, 'r', Runningvacancies);
-	vector<student_class> swimminglist_nowins = filelist.find1stClub(filelist, 's', Swimmingvacancies);
-	vector<student_class> chesslist_nowins = filelist.find1stClub(filelist, 'c', chessvacancies);
-
-
-
-	//###Printing Out CCA + ID + Vacancies###
-	cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
 	cout << "======================================================================" << endl;
+	cout << "FULL LIST OF STUDENTS AND INFORMATION\n";
 
 	//Prints the whole student list
 	for (student_class s : filelist.students)
 		test(s);
-	
+
 
 	cout << "======================================================================" << endl;
-	
+	cout << "LIST OF GAMING LIST PEOPLE\n";
 
 	for (int i = 0; i < gaminglist_nowins.size(); i++) {
 		student_class s = gaminglist_nowins.at(i);
 		test(s);
 	}
 
+	cout << "======================================================================" << endl;
+	cout << "LIST OF DANCING LIST PEOPLE\n";
+
+	for (int i = 0; i < dancinglist_nowins.size(); i++) {
+		student_class s = dancinglist_nowins.at(i);
+		test(s);
+	}
+
+	cout << "======================================================================" << endl;
+	cout << "LIST OF CHESS LIST PEOPLE\n";
+
+	for (int i = 0; i < chesslist_nowins.size(); i++) {
+		student_class s = chesslist_nowins.at(i);
+		test(s);
+	}
+
+	cout << "======================================================================" << endl;
+	cout << "LIST OF RUNNING LIST PEOPLE\n";
+
+	for (int i = 0; i < runninglist_nowins.size(); i++) {
+		student_class s = runninglist_nowins.at(i);
+		test(s);
+	}
+
+	cout << "======================================================================" << endl;
+	cout << "LIST OF SWIMMING LIST PEOPLE\n";
+
+	for (int i = 0; i < swimminglist_nowins.size(); i++) {
+		student_class s = swimminglist_nowins.at(i);
+		test(s);
+	}
+
+	cout << "======================================================================" << endl;
+	cout << "LIST OF TENIS LIST PEOPLE\n";
+
+	for (int i = 0; i < tennislist_nowins.size(); i++) {
+		student_class s = tennislist_nowins.at(i);
+		test(s);
+	}
 
 
 
 	cout << "======================================================================" << endl;
-	cout << filelist.students.size() << endl;
-	cout << vacancyfile.ccavacancy.size() << endl;
+	cout << "Number of students: " << filelist.students.size() << endl;
+	cout << "Number of cca vacancy? idk what this is: " << vacancyfile.ccavacancy.size() << endl;
 
 	cout << "======================================================================" << endl;
+	cout << "Remaining students who have no given sport\n";
 
-	
-	filelist.remainding_vector(filelist, gaminglist_nowins);
+	studentlist* filelist_ptr;
+	filelist_ptr = &filelist;
+
+	vector<student_class> b = filelist.remainding_vector(filelist, gaminglist_nowins);
+	vector<student_class> v = filelist.remainding_vector(filelist, chesslist_nowins);
+	//vector<student_class> v = filelist.remainding_vector(filelist, dancinglist_nowins);
+	//filelist.remainding_vector(filelist, runninglist_nowins);
+	//filelist.remainding_vector(filelist, swimminglist_nowins);
+	//filelist.remainding_vector(filelist, tennislist_nowins);
+
 	for (student_class s : filelist.students)
+		test(s);
+
+
+	cout << "======================================================================" << endl;
+	cout << "\n Chess List take out\n";
+	for (student_class s : v)
+		test(s);
+
+	cout << "======================================================================" << endl;
+	cout << "\n Gaming List List take out\n";
+	for (student_class s : b)
 		test(s);
 	
 
