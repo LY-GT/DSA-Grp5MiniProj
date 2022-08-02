@@ -193,30 +193,17 @@ int main() {
 	cout << "======================================================================" << endl;
 	cout << "Remaining students who have no given sport\n";
 
-	studentlist* filelist_ptr;
-	filelist_ptr = &filelist;
 
-	vector<student_class> b = filelist.remainding_vector(filelist, gaminglist_nowins);
-	vector<student_class> v = filelist.remainding_vector(filelist, chesslist_nowins);
-	//vector<student_class> v = filelist.remainding_vector(filelist, dancinglist_nowins);
-	//filelist.remainding_vector(filelist, runninglist_nowins);
-	//filelist.remainding_vector(filelist, swimminglist_nowins);
-	//filelist.remainding_vector(filelist, tennislist_nowins);
+
+	filelist.remainding_vector(filelist, gaminglist_nowins);
+	filelist.remainding_vector(filelist, chesslist_nowins);
+	filelist.remainding_vector(filelist, dancinglist_nowins);
+	filelist.remainding_vector(filelist, runninglist_nowins);
+	filelist.remainding_vector(filelist, swimminglist_nowins);
+	filelist.remainding_vector(filelist, tennislist_nowins);
 
 	for (student_class s : filelist.students)
 		test(s);
-
-
-	cout << "======================================================================" << endl;
-	cout << "\n Chess List take out\n";
-	for (student_class s : v)
-		test(s);
-
-	cout << "======================================================================" << endl;
-	cout << "\n Gaming List List take out\n";
-	for (student_class s : b)
-		test(s);
-	
 
 
 

@@ -127,40 +127,47 @@ vector<student_class> studentlist::replaceWins_vector(vector<student_class> x, c
 }
 */
 
-vector <student_class> studentlist::remainding_vector(studentlist& studentlist,
+void studentlist::remainding_vector(studentlist& studentlist,
 	vector<student_class> firstPickandWins) //Put an & just to transfer by reference
 {
 	vector<student_class>::iterator it, student_it;
-	vector<student_class> v;
-	cout << "======================================================================" << endl;
+
+
 	for (student_it = firstPickandWins.begin(), it = studentlist.students.begin();
 		it < studentlist.students.end(); it++)
 	{
-		if (check_same(*it, *student_it))
+		if (check_same(*studentlist.students.begin(), *student_it))
 		{
-			v.push_back(*it);
-			cout << (*it).getFirst_name() << " ";
-			cout << (*it).getLast_name() << " " << endl;
+			studentlist.students.erase(studentlist.students.begin());
+			it = studentlist.students.begin();
+			if (student_it + 1 == firstPickandWins.end())
+			{
+				break;
+			}
+			else
+			{
+				student_it++;
+			}
+
+		}
+		else if (check_same(*it, *student_it))
+		{
 			studentlist.students.erase(it);
 			it = studentlist.students.begin();
 
 			if (student_it + 1 == firstPickandWins.end())
 			{
-				cout << "BREAK";
 				break;
 			}
 
 			else
 			{
 				student_it++;
-				cout << "increase" << endl;
 
 			}
 		}
 
 	}
-	cout << "======================================================================" << endl;
-	return v;
 }
 
 //*************************ROUND 3**********************************
