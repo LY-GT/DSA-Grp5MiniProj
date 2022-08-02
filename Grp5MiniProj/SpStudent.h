@@ -20,9 +20,9 @@ public:
 	char getChoice1();
 	char getChoice2();
 	char getChoice3();
-	char getWinchoice1();
-	char getWinchoice2();
-	char getWinchoice3();
+	double getWinchoice1();
+	double getWinchoice2();
+	double getWinchoice3();
 
 private:
 	string first_name;
@@ -31,9 +31,9 @@ private:
 	char choice1;
 	char choice2;
 	char choice3;
-	char winchoice1;
-	char winchoice2;
-	char winchoice3;
+	double winchoice1;
+	double winchoice2;
+	double winchoice3;
 
 
 

@@ -52,17 +52,17 @@ char student_class::getChoice3()
 
 }
 
-char student_class::getWinchoice1()
+double student_class::getWinchoice1()
 {
 	return winchoice1;
 }
 
-char student_class::getWinchoice2()
+double student_class::getWinchoice2()
 {
 	return winchoice2;
 }
 
-char student_class::getWinchoice3()
+double student_class::getWinchoice3()
 {
 	return winchoice3;
 }
@@ -129,7 +129,7 @@ list<student_class> studentlist::remainding(studentlist studentlist,
 //==================================================================================
 // VECTOR VERSION OF finding 1st choice and resizing it
 // Put everyone who has (insert club here) as 1st choice
-vector<student_class> studentlist::find1stClub(studentlist list, char club, int VACANCY) {
+vector<student_class> studentlist::find1stClub(studentlist list, char club,  int VACANCY) {
 
 	vector<student_class> x;
 
