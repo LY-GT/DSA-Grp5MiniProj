@@ -34,7 +34,12 @@ bool sortingfunctionwins(student_class& s1, student_class& s2)
 		return true;
 }
 
-
+struct sortbyGPA
+{
+	bool operator () (student_class& A, student_class& B) {
+		return (A.getGPA() > B.getGPA());
+	}
+}
 
 bool round2endsort(student_class& s1, student_class& s2)
 {
@@ -131,8 +136,8 @@ void print(Vacancies v) {
 
 int main() {
 	//student_class student_class("John Joe 3.0 g");
-	studentlist filelist("C:\\Users\\KalliasWolf\\Documents\\Student.txt");
-	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\Vacancy.txt");
+	studentlist filelist("C:\\Users\\USER\\Documents\\Student.txt");
+	vacancieslist vacancyfile("C:\\Users\\USER\\Documents\\Vacancy.txt");
 
 	//Assigning vacancies to variables
 	int Dancingvacancies = 0;
@@ -528,7 +533,123 @@ int main() {
 	for (student_class s : filelist.students)
 		test(s);
 
+	//Start of round 5
+	sort(filelist.students.begin(), filelist.students.end(), sortbyGPA());
 
+	srand(time(0)); //This is to set a random seed for the RNG (random number generator)
+
+	do {
+		int rng = rand() % 6; //randomly sets a number from 0 to 5
+		switch (rng)
+		{
+		case 0: //case when rolled for Dancing (number = 0)
+			//Code for assigning student into dancing (Not yet implimented)
+			if (Dancingvacancies > 0)
+			{
+				dancinglist.push_back(studentlist.student.back());
+				cout << "Sent to Dancing" << endl;
+				studentlist.student.pop_back();
+				Dancingvacancies -= 1;
+				break;
+			}
+			else
+			{
+				cout << "No vacancies in Dancing" << endl;
+				i--;
+				break;
+			}
+
+		case 1: //case when rolled for Tennis (number = 1)
+			//Code for assigning student into tennis (Not yet implimented)
+			if (Tennisvacancies > 0)
+			{
+				tennislist.push_back(studentlist.student.back());
+				cout << "Sent to Tennis" << endl;
+				studentlist.student.pop_back();
+				Tennisvacancies -= 1;
+				break;
+			}
+			else
+			{
+				cout << "No vacancies in Tennis" << endl;
+				i--;
+				break;
+			}
+
+		case 2: //case when rolled for Gaming (number = 2)
+			//Code for assigning student into gaming (Not yet implimented)
+			if (Gamingvacancies > 0)
+			{
+				gaminglist.push_back(studentlist.student.back());
+				cout << "Sent to Gaming" << endl;
+				studentlist.student.pop_back();
+				Gamingvacancies -= 1;
+				break;
+			}
+			else
+			{
+				cout << "No vacancies in Gaming" << endl;
+				i--;
+				break;
+			}
+
+		case 3: //case when rolled for Running (number = 3)
+			//Code for assigning student into running (Not yet implimented)
+			if (Runningvacancies > 0)
+			{
+				runninglist.push_back(studentlist.student.back());
+				cout << "Sent to Running" << endl;
+				studentlist.student.pop_back();
+				Runningvacancies -= 1;
+				break;
+			}
+			else
+			{
+				cout << "No vacancies in Running" << endl;
+				i--;
+				break;
+			}
+
+		case 4: //case when rolled for Swimming (number = 4)
+			//Code for assigning student into swimming (Not yet implimented)
+			if (Swimmingvacancies > 0)
+			{
+				swimminglist.push_back(studentlist.student.back());
+				cout << "Sent to Swimming" << endl;
+				studentlist.student.pop_back();
+				Swimmingvacancies -= 1;
+				break;
+			}
+			else
+			{
+				cout << "No vacancies in Swimming" << endl;
+				i--;
+				break;
+			}
+
+		case 5: //case when rolled for Chess (number =5)
+			//Code for assigning student into chess (Not yet implimented)
+			if (Chessvacancies > 0)
+			{
+				chesslist.push_back(studentlist.student.back());
+				studentlist.student.pop_back();
+				cout << "Sent to Chess" << endl;
+				Chessvacancies -= 1;
+				break;
+			}
+			else
+			{
+				cout << "No vacancies in Chess" << endl;
+				i--;
+				break;
+			}
+
+		default: //default case when RNG doesnt go right.. Should not be the case
+			cout << "Error in the random number genrator.. Please check Round 5's code" << endl;
+			break;
+
+		}while (studentlist.student.size() != 0)
+	}
 
 
 	return 0;
