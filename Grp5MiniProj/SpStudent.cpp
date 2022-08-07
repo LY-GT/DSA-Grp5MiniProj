@@ -100,6 +100,8 @@ vector<student_class> studentlist::find1stClub(studentlist list, char club, int 
 		if (s.getChoice1() == club)
 		{
 			x.push_back(s);
+			//cout << s.getFirst_name() << " " << s.getLast_name() << endl;
+			
 
 		}
 	}
@@ -111,21 +113,11 @@ vector<student_class> studentlist::find1stClub(studentlist list, char club, int 
 	return x;
 }
 
+
 //*************************ROUND 2**********************************
 //==================================================================================
-/*
-vector<student_class> studentlist::replaceWins_vector(vector<student_class> x, char club)
-{
-	//check if current list have less than 3 students with winning records
-	//How do define winning record? with only 0 and 1 (No or Yes)
-	//or count how many competitions they have won? (Number)
-	//The latter will be more difficult.
-	//
-	//Check students with winning and replace(or not)/slot in(if got space)
 
 
-}
-*/
 
 void studentlist::remainding_vector(studentlist& studentlist,
 	vector<student_class> firstPickandWins) //Put an & just to transfer by reference
@@ -173,10 +165,109 @@ void studentlist::remainding_vector(studentlist& studentlist,
 //*************************ROUND 3**********************************
 //==================================================================================
 
+vector<student_class> studentlist::find2ndClub(studentlist list, char club, int vacancy)
+ {
+
+	vector<student_class> x;
+
+	for (student_class s : list.students)
+	{
+		if (s.getChoice2() == club)
+		{
+			x.push_back(s);
+			//cout << s.getFirst_name() << " " << s.getLast_name() << endl;
+
+
+		}
+	}
+
+	while (x.size() > vacancy) { //Set '2' to vacancy size
+		x.pop_back();
+	}
+
+	return x;
+}
+
+void studentlist::remainding_vector2(studentlist& studentlist,
+	vector<student_class> firstPickandWins) //Put an & just to transfer by reference
+{
+	vector<student_class>::iterator it, student_it;
+
+	int count = 0;
+	for (student_it = studentlist.students.begin(), it = firstPickandWins.begin();
+		it < firstPickandWins.end() || studentlist.students.empty(); it++)
+	{
+		if (check_same(*firstPickandWins.begin(), *student_it))
+		{
+			studentlist.students.erase(student_it);
+			it = firstPickandWins.begin();
+			student_it = studentlist.students.begin();
+
+			if (student_it + 1 + count == studentlist.students.end())
+			{
+				return;
+			}
+			else
+			{
+				student_it = student_it + count;
+				student_it++;
+				count++;
+			}
+		}
+
+		else if (check_same(*it, *student_it))
+		{
+			studentlist.students.erase(student_it);
+			it = firstPickandWins.begin();
+			student_it = studentlist.students.begin();
+
+			if (studentlist.students.empty())
+			{
+				return;
+
+			}
+
+		}
+		else if (it == firstPickandWins.end() - 1 && student_it == studentlist.students.end() - 1)
+		{
+			break;
+		}
+		else if (it == firstPickandWins.end() - 1)
+
+		{
+			student_it++;
+			it = firstPickandWins.begin();
+		}
+	}
 
 
 
 
+}
+
+//*************************ROUND 4**********************************
+//==================================================================================
+vector<student_class> studentlist::find3rdClub(studentlist list, char club, int vacancy) {
+
+	vector<student_class> x;
+
+	for (student_class s : list.students)
+	{
+		if (s.getChoice3() == club)
+		{
+			x.push_back(s);
+			//cout << s.getFirst_name() << " " << s.getLast_name() << endl;
+
+
+		}
+	}
+
+	while (x.size() > vacancy) { //Set '2' to vacancy size
+		x.pop_back();
+	}
+
+	return x;
+}
 
 
 

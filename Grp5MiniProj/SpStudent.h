@@ -48,12 +48,14 @@ public:
 
 	vector<student_class> students; //vector
 	bool check_same(student_class, student_class);
+	void print(student_class);
 
 	//VECTOR FUNCTIONS
 	vector<student_class> find1stClub(studentlist, char, int);
-	vector<student_class> replaceWins_vector(vector<student_class>, char);
+	vector<student_class> find2ndClub(studentlist, char, int);
+	vector<student_class> find3rdClub(studentlist, char, int);
 	void remainding_vector(studentlist&, vector<student_class>);
-	
+	void remainding_vector2(studentlist&, vector<student_class>);
 
 	
 
