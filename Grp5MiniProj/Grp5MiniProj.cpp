@@ -149,18 +149,20 @@ int main() {
 	case 1: 
 		cout << "This method requires you to have Student.txt and Vacancy.txt to be in Documents." << endl;
 		cout << "Please type in your username that is used on this computer: ";
-		cin >> username;
+		cin.ignore();
+		getline(cin, username);
 		studentpath = "C:\\Users\\" + username + "\\Documents\\Student.txt";
 		vacancypath = "C:\\Users\\" + username + "\\Documents\\Vacancy.txt";
+		
+		
 		break;
 	case 2:
 		cout << "Please type the path file for student info: ";
-		cin >> studentpath;
-		//getline(cin,studentpath);
+		cin.ignore();
+		getline(cin,studentpath);
 		cout << "Please type the path file for vacancypath: ";
-		cin >> vacancypath;
-		//getline(cin, vacancypath);
-
+		getline(cin, vacancypath);
+		cout << studentpath;
 		break;
 	}
 
@@ -352,7 +354,7 @@ int main() {
 		checker = chessid;
 		checkvac = Chessvacancies;
 	}
-	cout << checkvac;
+	//cout << checkvac;
 	//Checks for no. of 'Special' students in the vector holding the cca students
 	cout << "==============================================" << endl;
 	for (int i = 0; i < checkervector.size(); i++) {
