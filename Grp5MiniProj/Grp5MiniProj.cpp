@@ -131,8 +131,44 @@ void print(Vacancies v) {
 
 int main() {
 	//student_class student_class("John Joe 3.0 g");
-	studentlist filelist("C:\\Users\\KalliasWolf\\Documents\\Student.txt");
-	vacancieslist vacancyfile("C:\\Users\\KalliasWolf\\Documents\\Vacancy.txt");
+	string username;
+	int option;
+	string studentpath;
+	string vacancypath;
+	cout << "Choose if you want to type in your username (option 1) or to type in the pathfiles (option 2): ";
+	cin >> option;
+	while (option < 1 || option > 2 )
+	{
+		cout << "Invalid option\n";
+		cout << "Please choose option 1 or 2: ";
+		cin >> option;
+		
+	}
+	switch (option)
+	{
+	case 1: 
+		cout << "This method requires you to have Student.txt and Vacancy.txt to be in Documents." << endl;
+		cout << "Please type in your username that is used on this computer: ";
+		cin >> username;
+		studentpath = "C:\\Users\\" + username + "\\Documents\\Student.txt";
+		vacancypath = "C:\\Users\\" + username + "\\Documents\\Vacancy.txt";
+		break;
+	case 2:
+		cout << "Please type the path file for student info: ";
+		cin >> studentpath;
+		//getline(cin,studentpath);
+		cout << "Please type the path file for vacancypath: ";
+		cin >> vacancypath;
+		//getline(cin, vacancypath);
+
+		break;
+	}
+
+	studentlist filelist(studentpath);
+	vacancieslist vacancyfile(vacancypath);
+		
+
+
 
 	//Assigning vacancies to variables
 	int Dancingvacancies = 0;
