@@ -414,8 +414,8 @@ int main() {
 			count++;
 		}
 	}
-
-	cout << "No. of students with win records in special sport: " << specialcca << " " << count << endl;
+	cout << "Round 2 begins now....... " << endl;
+	cout << "No. of students with win records in special sport " << specialcca << ": " << count << endl;
 
 
 	if (count < 3) {
@@ -632,7 +632,7 @@ int main() {
 	if (tennislist.size() > 0) { filelist.remainding_vector(filelist, tennislist); }
 
 	printingfxn(filelist.students);
-
+	cout << "Round 2 ends here............" << endl;
 	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(dancingid));
 	vector<student_class> dancinglist_second = filelist.find2ndClub(filelist, dancingid, (Dancingvacancies - dancinglist.size()));
 
