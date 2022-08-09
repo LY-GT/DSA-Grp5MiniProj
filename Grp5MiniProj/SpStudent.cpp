@@ -245,6 +245,65 @@ void studentlist::remainding_vector2(studentlist& studentlist,
 
 }
 
+void studentlist::remainding_vector3(vector<student_class> &studentlist,
+	vector<student_class> &firstPickandWins) //Put an & just to transfer by reference
+{
+	vector<student_class>::iterator it, student_it;
+
+	int count = 0;
+	for (student_it = studentlist.begin(), it = firstPickandWins.begin();
+		it < firstPickandWins.end() || studentlist.empty(); it++)
+	{
+		if (check_same(*firstPickandWins.begin(), *student_it))
+		{
+			studentlist.erase(student_it);
+			it = firstPickandWins.begin();
+			student_it = studentlist.begin();
+
+			if (student_it + 1 + count == studentlist.end())
+			{
+				firstPickandWins.clear();
+				return;
+			}
+			else
+			{
+				student_it = student_it + count;
+				student_it++;
+				count++;
+			}
+		}
+
+		else if (check_same(*it, *student_it))
+		{
+			studentlist.erase(student_it);
+			it = firstPickandWins.begin();
+			student_it = studentlist.begin();
+
+			if (studentlist.empty())
+			{
+				firstPickandWins.clear();
+				return;
+
+			}
+
+		}
+		else if (it == firstPickandWins.end() - 1 && student_it == studentlist.end() - 1)
+		{
+			firstPickandWins.clear();
+			break;
+		}
+		else if (it == firstPickandWins.end() - 1)
+
+		{
+			student_it++;
+			it = firstPickandWins.begin();
+		}
+	}
+	firstPickandWins.clear();
+
+
+}
+
 //*************************ROUND 4**********************************
 //==================================================================================
 vector<student_class> studentlist::find3rdClub(studentlist list, char club, int vacancy) {

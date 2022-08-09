@@ -56,6 +56,7 @@ public:
 	vector<student_class> find3rdClub(studentlist, char, int);
 	void remainding_vector(studentlist&, vector<student_class>);
 	void remainding_vector2(studentlist&, vector<student_class>);
+	void remainding_vector3(vector<student_class>&, vector<student_class>&);
 
 	
 

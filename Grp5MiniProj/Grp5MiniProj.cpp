@@ -314,6 +314,7 @@ int main() {
 		checker = dancingid;
 		checkervector = dancinglist;
 		checkvac = Dancingvacancies;
+
 	}
 	if (specialcca == TennisCCA) {
 		checkervector = tennislist;
@@ -411,6 +412,7 @@ int main() {
 
 
 	cout << endl;
+	vector<student_class> removal;
 
 	cout << "=====================================" << endl;
 	//Sorts by no.wins
@@ -434,12 +436,13 @@ int main() {
 		if (checker == gamingid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				gaminglist.push_back(specialvector[i]);
+				removal.push_back(specialvector[i]);
 				if (i + 1 >= adding) {
 					break;
 				}
 			}
 			sort(gaminglist.begin(), gaminglist.end(), round2endsort);
-			if (gaminglist.size() > Gamingvacancies)
+			while (gaminglist.size() > Gamingvacancies)
 				gaminglist.pop_back();
 			checkervector = gaminglist;
 			break;
@@ -447,12 +450,13 @@ int main() {
 		if (checker == chessid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				chesslist.push_back(specialvector[i]);
+				removal.push_back(specialvector[i]);
 				if (i + 1 >= adding) {
 					break;
 				}
 			}
 			sort(chesslist.begin(), chesslist.end(), round2endsort);
-			if (chesslist.size() > Chessvacancies)
+			while (chesslist.size() > Chessvacancies)
 				chesslist.pop_back();
 			checkervector = chesslist;
 			break;
@@ -460,12 +464,13 @@ int main() {
 		if (checker == tennisid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				tennislist.push_back(specialvector[i]);
+				removal.push_back(specialvector[i]);
 				if (i + 1 >= adding) {
 					break;
 				}
 			}
 			sort(tennislist.begin(), tennislist.end(), round2endsort);
-			if (tennislist.size() > Tennisvacancies)
+			while (tennislist.size() > Tennisvacancies)
 				tennislist.pop_back();
 			checkervector = tennislist;
 			break;
@@ -473,12 +478,14 @@ int main() {
 		if (checker == dancingid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				dancinglist.push_back(specialvector[i]);
+				removal.push_back(specialvector[i]);
+				cout << "adding";
 				if (i + 1 >= adding) {
 					break;
 				}
 			}
 			sort(dancinglist.begin(), dancinglist.end(), round2endsort);
-			if (dancinglist.size() > Dancingvacancies)
+			while (dancinglist.size() > Dancingvacancies)
 				dancinglist.pop_back();
 			checkervector = dancinglist;
 			break;
@@ -487,12 +494,13 @@ int main() {
 		if (checker == runningid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				runninglist.push_back(specialvector[i]);
+				removal.push_back(specialvector[i]);
 				if (i + 1 >= adding) {
 					break;
 				}
 			}
 			sort(runninglist.begin(), runninglist.end(), round2endsort);
-			if (runninglist.size() > Runningvacancies)
+			while (runninglist.size() > Runningvacancies)
 				runninglist.pop_back();
 			checkervector = runninglist;
 			break;
@@ -501,19 +509,25 @@ int main() {
 		if (checker == swimmingid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				swimminglist.push_back(specialvector[i]);
+				removal.push_back(specialvector[i]);
 				if (i + 1 >= adding) {
 					break;
 				}
 			}
 			sort(swimminglist.begin(), swimminglist.end(), round2endsort);
-			if (swimminglist.size() > Swimmingvacancies)
+			while (swimminglist.size() > Swimmingvacancies)
 				swimminglist.pop_back();
 			checkervector = swimminglist;
 			break;
 		}
 	}
 
-
+	if (!removal.empty()) filelist.remainding_vector3(chesslist, removal); 
+	if (!removal.empty()) filelist.remainding_vector3(gaminglist, removal); 
+	if (!removal.empty()) filelist.remainding_vector3(swimminglist, removal);
+	if (!removal.empty()) filelist.remainding_vector3(dancinglist, removal);
+	if (!removal.empty()) filelist.remainding_vector3(runninglist, removal);
+	if (!removal.empty()) filelist.remainding_vector3(tennislist, removal);
 
 
 
@@ -669,16 +683,58 @@ int main() {
 	printingfxn(tennislist);
 
 
-	if (gaminglist.size() > 0) { filelist.remainding_vector2(filelist, gaminglist); }
-	if (chesslist.size() > 0) { filelist.remainding_vector2(filelist, chesslist); }
-	if (dancinglist.size() > 0) { filelist.remainding_vector2(filelist, dancinglist); }
-	if (runninglist.size() > 0) { filelist.remainding_vector2(filelist, runninglist); }
-	if (swimminglist.size() > 0) { filelist.remainding_vector2(filelist, swimminglist); }
-	if (tennislist.size() > 0) { filelist.remainding_vector2(filelist, tennislist); }
+		if (gaminglist.size() > 0 && !filelist.students.empty()) { filelist.remainding_vector2(filelist, gaminglist); }
+		if (chesslist.size() > 0 && !filelist.students.empty()) { filelist.remainding_vector2(filelist, chesslist); }
+		if (dancinglist.size() > 0 && !filelist.students.empty()) { filelist.remainding_vector2(filelist, dancinglist); }
+		if (runninglist.size() > 0 && !filelist.students.empty()) { filelist.remainding_vector2(filelist, runninglist); }
+		if (swimminglist.size() > 0 && !filelist.students.empty()) { filelist.remainding_vector2(filelist, swimminglist); }
+		if (tennislist.size() > 0 && !filelist.students.empty()) { filelist.remainding_vector2(filelist, tennislist); }
+		
+	else
+	{
+			cout << "======================================================================" << endl;
+			cout << "LIST OF GAMING LIST PEOPLE ROUND 1\n";
+
+			printingfxn(gaminglist);
+
+			cout << "======================================================================" << endl;
+			cout << "LIST OF DANCING LIST PEOPLE \n";
+
+			printingfxn(dancinglist);
+
+			cout << "======================================================================" << endl;
+			cout << "LIST OF CHESS LIST PEOPLE \n";
+
+			printingfxn(chesslist);
+
+			cout << "======================================================================" << endl;
+			cout << "LIST OF RUNNING LIST PEOPLE\n";
+
+			printingfxn(runninglist);
+
+			cout << "======================================================================" << endl;
+			cout << "LIST OF SWIMMING LIST PEOPLE \n";
+
+			printingfxn(swimminglist);
+
+			cout << "======================================================================" << endl;
+			cout << "LIST OF TENNIS LIST PEOPLE \n";
+
+			printingfxn(tennislist);
+
+
+
+		system("pause"); 
+		return 0;
+	}
 
 	cout << "======================================================================" << endl;
 	cout << "LIST OF PEOPLE WITH NO SPORT AFTER ROUND 4\n";
 
+	if (filelist.students.empty())
+	{
+		return 0;
+	}
 	printingfxn(filelist.students);
 
 	cout << "======================================================================" << endl;
@@ -837,5 +893,7 @@ int main() {
 
 	printingfxn(tennislist);
 
+
+	system("pause");
 	return 0;
 }
