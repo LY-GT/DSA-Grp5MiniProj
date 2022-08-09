@@ -152,9 +152,11 @@ int main() {
 	string vacancypath;
 	cout << "Choose if you want to type in your username (option 1) or to type in the pathfiles (option 2): ";
 	cin >> option;
-	while (option < 1 || option > 2)
+	while (cin.fail() || option < 1 || option > 2)
 	{
 		cout << "Invalid option\n";
+		cin.clear();
+		cin.ignore(256, '\n');
 		cout << "Please choose option 1 or 2: ";
 		cin >> option;
 
@@ -177,6 +179,7 @@ int main() {
 		getline(cin, studentpath);
 		cout << "Please type the path file for vacancypath: ";
 		getline(cin, vacancypath);
+		cout << studentpath;
 		break;
 	}
 
@@ -756,128 +759,135 @@ int main() {
 	sort(filelist.students.begin(), filelist.students.end(), sortbyGPA());
 
 	srand(time(0)); //This is to set a random seed for the RNG (random number generator)
+	if (filelist.students.size() != 0)
+	{
+		do {
+			int rng = rand() % 6; //randomly sets a number from 0 to 5
+			switch (rng)
+			{
+			case 0: //case when rolled for Dancing (number = 0)
+				//Code for assigning student into dancing (Not yet implimented)
+				if (dancinglist.size() < Dancingvacancies)
+				{
+					dancinglist.push_back(filelist.students.back());
+					cout << "\nSent to Dancing" << endl;
+					test(*(filelist.students.end() - 1));
+					filelist.students.pop_back();
 
-	do {
-		int rng = rand() % 6; //randomly sets a number from 0 to 5
-		switch (rng)
-		{
-		case 0: //case when rolled for Dancing (number = 0)
-			//Code for assigning student into dancing (Not yet implimented)
-			if (dancinglist.size() < Dancingvacancies)
-			{
-				dancinglist.push_back(filelist.students.back());
-				cout << "\nSent to Dancing" << endl;
-				test(*(filelist.students.end() - 1));
-				filelist.students.pop_back();
-				
-				break;
-			}
-			else
-			{
-				cout << "\nNo vacancies in Dancing" << endl;
-				
-				break;
-			}
+					break;
+				}
+				else
+				{
+					cout << "\nNo vacancies in Dancing" << endl;
 
-		case 1: //case when rolled for Tennis (number = 1)
-			//Code for assigning student into tennis (Not yet implimented)
-			if (tennislist.size() < Tennisvacancies)
-			{
-				tennislist.push_back(filelist.students.back());
-				cout << "\nSent to Tennis" << endl;
-				test(*(filelist.students.end() - 1));
-				filelist.students.pop_back();
-				
-				break;
-			}
-			else
-			{
-				cout << "\nNo vacancies in Tennis" << endl;
-				
-				break;
-			}
+					break;
+				}
 
-		case 2: //case when rolled for Gaming (number = 2)
-			//Code for assigning student into gaming (Not yet implimented)
-			if (gaminglist.size() < Gamingvacancies)
-			{
-				gaminglist.push_back(filelist.students.back());
-				cout << "\nSent to Gaming" << endl;
-				test(*(filelist.students.end() - 1));
-				filelist.students.pop_back();
-				
-				break;
-			}
-			else
-			{
-				cout << "\nNo vacancies in Gaming" << endl;
-				
-				break;
-			}
+			case 1: //case when rolled for Tennis (number = 1)
+				//Code for assigning student into tennis (Not yet implimented)
+				if (tennislist.size() < Tennisvacancies)
+				{
+					tennislist.push_back(filelist.students.back());
+					cout << "\nSent to Tennis" << endl;
+					test(*(filelist.students.end() - 1));
+					filelist.students.pop_back();
 
-		case 3: //case when rolled for Running (number = 3)
-			//Code for assigning student into running (Not yet implimented)
-			if (runninglist.size() < Runningvacancies)
-			{
-				runninglist.push_back(filelist.students.back());
-				cout << "\nSent to Running" << endl;
-				test(*(filelist.students.end() - 1));
-				filelist.students.pop_back();
-				
-				break;
-			}
-			else
-			{
-				cout << "\nNo vacancies in Running" << endl;
-				
-				break;
-			}
+					break;
+				}
+				else
+				{
+					cout << "\nNo vacancies in Tennis" << endl;
 
-		case 4: //case when rolled for Swimming (number = 4)
-			//Code for assigning student into swimming (Not yet implimented)
-			if (swimminglist.size() < Swimmingvacancies)
-			{
-				swimminglist.push_back(filelist.students.back());
-				cout << "\nSent to Swimming" << endl;
-				test(*(filelist.students.end() - 1));
-				filelist.students.pop_back();
-				
-				break;
-			}
-			else
-			{
-				cout << "\nNo vacancies in Swimming" << endl;
-				
-				break;
-			}
+					break;
+				}
 
-		case 5: //case when rolled for Chess (number =5)
-			//Code for assigning student into chess (Not yet implimented)
-			if (chesslist.size() < Chessvacancies)
-			{
-				chesslist.push_back(filelist.students.back());
-				cout << "\nSent to Chess" << endl;
-				test(*(filelist.students.end() - 1));
-				filelist.students.pop_back();
-				
+			case 2: //case when rolled for Gaming (number = 2)
+				//Code for assigning student into gaming (Not yet implimented)
+				if (gaminglist.size() < Gamingvacancies)
+				{
+					gaminglist.push_back(filelist.students.back());
+					cout << "\nSent to Gaming" << endl;
+					test(*(filelist.students.end() - 1));
+					filelist.students.pop_back();
+
+					break;
+				}
+				else
+				{
+					cout << "\nNo vacancies in Gaming" << endl;
+
+					break;
+				}
+
+			case 3: //case when rolled for Running (number = 3)
+				//Code for assigning student into running (Not yet implimented)
+				if (runninglist.size() < Runningvacancies)
+				{
+					runninglist.push_back(filelist.students.back());
+					cout << "\nSent to Running" << endl;
+					test(*(filelist.students.end() - 1));
+					filelist.students.pop_back();
+
+					break;
+				}
+				else
+				{
+					cout << "\nNo vacancies in Running" << endl;
+
+					break;
+				}
+
+			case 4: //case when rolled for Swimming (number = 4)
+				//Code for assigning student into swimming (Not yet implimented)
+				if (swimminglist.size() < Swimmingvacancies)
+				{
+					swimminglist.push_back(filelist.students.back());
+					cout << "\nSent to Swimming" << endl;
+					test(*(filelist.students.end() - 1));
+					filelist.students.pop_back();
+
+					break;
+				}
+				else
+				{
+					cout << "\nNo vacancies in Swimming" << endl;
+
+					break;
+				}
+
+			case 5: //case when rolled for Chess (number =5)
+				//Code for assigning student into chess (Not yet implimented)
+				if (chesslist.size() < Chessvacancies)
+				{
+					chesslist.push_back(filelist.students.back());
+					cout << "\nSent to Chess" << endl;
+					test(*(filelist.students.end() - 1));
+					filelist.students.pop_back();
+
+					break;
+				}
+				else
+				{
+					cout << "\nNo vacancies in Chess" << endl;
+
+					break;
+				}
+
+			default: //default case when RNG doesnt go right.. Should not be the case
+				cout << "Error in the random number genrator.. Please check Round 5's code" << endl;
 				break;
+
 			}
-			else
-			{
-				cout << "\nNo vacancies in Chess" << endl;
-				
-				break;
-			}
+		} while (filelist.students.size() != 0);
+	}
+	else
+	{
+	cout << "No more people to assign for Round 5!" << endl << endl;
+	}
 
-		default: //default case when RNG doesnt go right.. Should not be the case
-			cout << "Error in the random number genrator.. Please check Round 5's code" << endl;
-			break;
-
-		}
-	}while (filelist.students.size() != 0);
-
+	cout << "Final list" << endl;
 	cout << "======================================================================" << endl;
-	cout << "LIST OF GAMING LIST PEOPLE ROUND 1\n";
+	cout << "LIST OF GAMING LIST PEOPLE \n";
 
 	printingfxn(gaminglist);
 
