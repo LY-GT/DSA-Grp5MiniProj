@@ -137,9 +137,11 @@ int main() {
 	string vacancypath;
 	cout << "Choose if you want to type in your username (option 1) or to type in the pathfiles (option 2): ";
 	cin >> option;
-	while (option < 1 || option > 2 )
+	while (cin.fail() || option < 1 || option > 2)
 	{
 		cout << "Invalid option\n";
+		cin.clear();
+		cin.ignore(256,'\n');
 		cout << "Please choose option 1 or 2: ";
 		cin >> option;
 		
