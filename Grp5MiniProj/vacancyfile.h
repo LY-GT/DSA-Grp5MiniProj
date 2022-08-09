@@ -11,7 +11,7 @@ using namespace std;
 
 class Vacancies {
 public:
-	Vacancies(string VacanciesInfo); //Constructer for Vacancies 
+	Vacancies(string VacanciesInfo);
 	string getCCAName();
 	int getvacancies();
 	char getCCAID();

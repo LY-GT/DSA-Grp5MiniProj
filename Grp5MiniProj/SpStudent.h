@@ -9,7 +9,7 @@
 
 using namespace std;
 
-/*Stores data of students in a object*/
+
 class student_class {
 public:
 	student_class(string studentinfomation);
@@ -41,16 +41,16 @@ private:
 
 };
 
-/*Used to call functions regarding the whole vector/stack of students(objects)*/
+
 class studentlist {
 public:
 	studentlist(string filepath);
 
-	vector<student_class> students; //vector
+	vector<student_class> students; 
 	bool check_same(student_class, student_class);
 	void print(student_class);
 
-	//VECTOR FUNCTIONS
+	
 	vector<student_class> find1stClub(studentlist, char, int);
 	vector<student_class> find2ndClub(studentlist, char, int);
 	vector<student_class> find3rdClub(studentlist, char, int);
@@ -59,16 +59,4 @@ public:
 	void remainding_vector3(vector<student_class>&, vector<student_class>&);
 
 	
-
-	//Chose to public the functions cause I'm lazy to do 
-	//work around on if they were private lol
-
-	//LIST FUNCTIONS
-	//list<student_class> find1stClub_list(studentlist, char);
-	//list<student_class> replaceWins(list<student_class>, char);
-	//list<student_class> remainding(studentlist, list<student_class>);
-
-	void printInfo(student_class);//stack print, not in use.
-
-
 };

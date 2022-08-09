@@ -33,7 +33,7 @@ int Vacancies::getvacancies()
 
 
 
-//Reading the file
+
 vacancieslist::vacancieslist(string pathtovacancies) {
 	ifstream vacancypath(pathtovacancies);
 
@@ -43,10 +43,9 @@ vacancieslist::vacancieslist(string pathtovacancies) {
 		getline(vacancypath, vacancycontents);
 
 		Vacancies v(vacancycontents);
-		ccavacancy.push_back(v); //storing vacancies.txt into vector
-		//cout << ccavacancy.size() << endl;
+		ccavacancy.push_back(v); 
+	
 	}
 	vacancypath.close();
 }
 
-//Check winchoice

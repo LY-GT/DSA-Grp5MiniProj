@@ -9,7 +9,7 @@
 using namespace std;
 
 
-//For round 2
+
 char checker;
 bool sortingfunctionGPA(student_class& s1, student_class& s2);
 void printingfxn(vector<student_class> toprint);
@@ -20,7 +20,7 @@ bool sortingfunctionwins(student_class& s1, student_class& s2)
 {
 	double s1wins = 0;
 	double s2wins = 0;
-	//Checking wins 
+	 
 	if (s1.getChoice2() == checker)
 		s1wins = s1.getWinchoice2();
 	if (s1.getChoice3() == checker)
@@ -32,20 +32,18 @@ bool sortingfunctionwins(student_class& s1, student_class& s2)
 	if (s1wins < s2wins) {
 		return false;
 	}
-	else if (s1wins = s2wins) {
+	else if (s1wins == s2wins) {
 		return sortingfunctionGPA(s1, s2);
 	}
 	else
 		return true;
 }
 
-
-
 bool round2endsort(student_class& s1, student_class& s2)
 {
 	double s1wins = 0;
 	double s2wins = 0;
-	//Checking wins 
+	
 	if (s1.getChoice1() == checker)
 		s1wins = s1.getWinchoice1();
 	if (s1.getChoice2() == checker)
@@ -58,10 +56,12 @@ bool round2endsort(student_class& s1, student_class& s2)
 		s2wins = s2.getWinchoice2();
 	if (s2.getChoice3() == checker)
 		s2wins = s2.getWinchoice3();
+
+	
 	if (s1wins < s2wins) {
 		return false;
 	}
-	else if (s1wins = s2wins) {
+	else if (s1wins == s2wins) {
 		
 		return sortingfunctionGPA(s1, s2);
 	}
@@ -87,12 +87,42 @@ void printingfxn(vector<student_class> toprint){
 		test(s);
 	}
 }
-/*                                                                            */
+
+
+
 struct sortbyGPA
 {
 	bool operator () (student_class& A, student_class& B) {
 		return (A.getGPA() > B.getGPA());
 	}
+	
+};
+
+struct sortbyCLUB_WINS2
+{
+	sortbyCLUB_WINS2(char club) { this->club = club; }
+	bool operator () (student_class& A, student_class& B) {
+
+		if (A.getChoice2() == club && B.getChoice2() == club)
+		{
+			return (A.getWinchoice2() > B.getWinchoice2());
+		}
+		else if (A.getChoice2() == club && B.getChoice2() == club)
+		{
+			return (A.getGPA() > B.getGPA());
+		}
+		else if (A.getChoice2() == club)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	char club;
+
 };
 
 struct sortbyCLUB_WINS
@@ -116,13 +146,41 @@ struct sortbyCLUB_WINS
 		{
 			return false;
 		}
-		//reference: -https://stackoverflow.com/questions/4066576/passing-a-parameter-to-a-comparison-function
+		
 	}
 	char club;
 
 };
 
-//TO PRINT OUTPUT
+struct sortbyCLUB_WINS3
+{
+	sortbyCLUB_WINS3(char club) { this->club = club; }
+	bool operator () (student_class& A, student_class& B) {
+
+		if (A.getChoice3() == club && B.getChoice3() == club)
+		{
+			return (A.getWinchoice3() > B.getWinchoice3());
+		}
+		else if (A.getChoice3() == club && B.getChoice3() == club)
+		{
+			return (A.getGPA() > B.getGPA());
+		}
+		else if (A.getChoice3() == club)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
+	char club;
+
+};
+
+
+
 void test(student_class student_class) {
 
 	cout << student_class.getFirst_name() << " ";
@@ -186,7 +244,7 @@ int main() {
 	studentlist filelist(studentpath);
 	vacancieslist vacancyfile(vacancypath);
 
-	//Assigning vacancies to variables
+
 	int Dancingvacancies;
 	int Tennisvacancies;
 	int Gamingvacancies;
@@ -243,7 +301,7 @@ int main() {
 			specialcca = v.getCCAName();
 		}
 	}
-	//cout << specialcca << endl;
+
 
 
 
@@ -266,9 +324,9 @@ int main() {
 	vector<student_class> chesslist = filelist.find1stClub(filelist, chessid, Chessvacancies);
 
 
-	//###Printing Out CCA + ID + Vacancies###
+
 	cout << "Name of CCA " << "	" << "CCAID " << "	" << "Number of Vacancies " << endl;
-	//Print out contents of list
+
 	for (int i = 0; i < vacancyfile.ccavacancy.size(); i++) {
 		Vacancies v = vacancyfile.ccavacancy.at(i);
 		print(v);
@@ -277,7 +335,7 @@ int main() {
 	cout << "======================================================================" << endl;
 	cout << "FULL LIST OF STUDENTS AND INFORMATION\n";
 
-	//Prints the whole student list
+
 	printingfxn(filelist.students);
 
 
@@ -311,13 +369,12 @@ int main() {
 	printingfxn(tennislist);
 
 
-	//Round 2
+	
 	vector<student_class> specialvector;
 	vector<student_class> checkervector;
 	int checkvac = 0;
 	int count = 0;
-	//Create a function to assign the id to search 
-	//Checker is global
+
 	if (specialcca == DancingCCA) {
 		checker = dancingid;
 		checkervector = dancinglist;
@@ -349,20 +406,17 @@ int main() {
 		checker = chessid;
 		checkvac = Chessvacancies;
 	}
-	//cout << checkvac;
-	//Checks for no. of 'Special' students in the vector holding the cca students
+
 	cout << "==============================================" << endl;
 	for (int i = 0; i < checkervector.size(); i++) {
 		student_class s = checkervector.at(i);
-		//test(s);
 		if (s.getWinchoice1() >= '1') {
 			count++;
 		}
 	}
 
 	cout << "No. of students with win records in special sport: " << specialcca << " " << count << endl;
-	//Checking chesscca for special students (students with wins in the special sport)
-	//if vectorsize > vacacny
+
 
 	if (count < 3) {
 		for (int i = 0; i < gaminglist.size(); i++) {
@@ -421,9 +475,9 @@ int main() {
 
 	cout << endl;
 	vector<student_class> removal;
-	
+
 	cout << "=====================================" << endl;
-	//Sorts by no.wins
+	
 	while (bool ender = true) {
 		if (specialvector.size() == 0) {
 			cout << "There are no potential stolen candidates..." << endl;
@@ -436,15 +490,15 @@ int main() {
 			student_class s = specialvector.at(i);
 			test(s);
 		}
-		//Adds students from specialvector into special cca
-		//no. to add 
+		
 		int adding = 3 - count;
 		int potentialcandidates = specialvector.size();
-		//cout << potentialcandidates;
+		
 		if (checker == gamingid) {
 			for (int i = 0; i < specialvector.size(); i++) {
 				gaminglist.push_back(specialvector[i]);
 				removal.push_back(specialvector[i]);
+
 				if (i + 1 >= adding) {
 					break;
 				}
@@ -522,7 +576,7 @@ int main() {
 					break;
 				}
 			}
-			
+
 			sort(swimminglist.begin(), swimminglist.end(), round2endsort);
 			while (swimminglist.size() > Swimmingvacancies)
 				swimminglist.pop_back();
@@ -536,18 +590,29 @@ int main() {
 	cout << added << " students stolen! " << endl;
 	cout << "The students stolen are: " << endl;
 	printingfxn(removal);
-	if (!removal.empty() && specialcca != ChessCCA) filelist.remainding_vector3(chesslist, removal);
-	if (!removal.empty() && specialcca != GamingCCA) filelist.remainding_vector3(gaminglist, removal);  
-	if (!removal.empty() && specialcca != SwimmingCCA) filelist.remainding_vector3(swimminglist, removal); 
-	if (!removal.empty() && specialcca != DancingCCA)  filelist.remainding_vector3(dancinglist, removal);  
-	if (!removal.empty() && specialcca != RunningCCA) filelist.remainding_vector3(runninglist, removal);
-	if (!removal.empty() && specialcca != TennisCCA) filelist.remainding_vector3(tennislist, removal);
 
 
 
-	cout << "=====================================" << endl;
+	if (!removal.empty() && specialcca != ChessCCA)  filelist.remainding_vector3(chesslist, removal);
+	if (!removal.empty() && specialcca != GamingCCA) filelist.remainding_vector3(gaminglist, removal); 
+
+	if (!removal.empty() && specialcca != SwimmingCCA)  filelist.remainding_vector3(swimminglist, removal); 
+	if (!removal.empty() && specialcca != DancingCCA)   filelist.remainding_vector3(dancinglist, removal); 
+	
+	if (!removal.empty() && specialcca != RunningCCA)   filelist.remainding_vector3(runninglist, removal);
+	if (!removal.empty() && specialcca != TennisCCA)    filelist.remainding_vector3(tennislist, removal);
+
+
+
+	cout << "\n=====================================" << endl;
 	cout << "\n----Updated " << specialcca << " list--------\n";
 	printingfxn(checkervector);
+
+
+
+
+
+
 
 
 
@@ -568,22 +633,22 @@ int main() {
 
 	printingfxn(filelist.students);
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(dancingid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(dancingid));
 	vector<student_class> dancinglist_second = filelist.find2ndClub(filelist, dancingid, (Dancingvacancies - dancinglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(tennisid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(tennisid));
 	vector<student_class> tennislist_second = filelist.find2ndClub(filelist, tennisid, (Tennisvacancies - tennislist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(gamingid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(gamingid));
 	vector<student_class> gaminglist_second = filelist.find2ndClub(filelist, gamingid, (Gamingvacancies - gaminglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(runningid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(runningid));
 	vector<student_class> runninglist_second = filelist.find2ndClub(filelist, runningid, (Runningvacancies - runninglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(swimmingid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(swimmingid));
 	vector<student_class> swimminglist_second = filelist.find2ndClub(filelist, swimmingid, (Swimmingvacancies - swimminglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(chessid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS2(chessid));
 	vector<student_class> chesslist_second = filelist.find2ndClub(filelist, chessid, (Chessvacancies - chesslist.size()));
 
 
@@ -640,22 +705,22 @@ int main() {
 	printingfxn(filelist.students);
 
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(dancingid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS3(dancingid));
 	vector<student_class> dancinglist_third = filelist.find3rdClub(filelist, dancingid, (Dancingvacancies - dancinglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(tennisid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS3(tennisid));
 	vector<student_class> tennislist_third = filelist.find3rdClub(filelist, tennisid, (Tennisvacancies - tennislist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(gamingid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS3(gamingid));
 	vector<student_class> gaminglist_third = filelist.find3rdClub(filelist, gamingid, (Gamingvacancies - gaminglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(runningid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS3(runningid));
 	vector<student_class> runninglist_third = filelist.find3rdClub(filelist, runningid, (Runningvacancies - runninglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(swimmingid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS3(swimmingid));
 	vector<student_class> swimminglist_third = filelist.find3rdClub(filelist, swimmingid, (Swimmingvacancies - swimminglist.size()));
 
-	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS(chessid));
+	sort(filelist.students.begin(), filelist.students.end(), sortbyCLUB_WINS3(chessid));
 	vector<student_class> chesslist_third = filelist.find3rdClub(filelist, chessid, (Chessvacancies - chesslist.size()));
 
 
@@ -709,7 +774,7 @@ int main() {
 	else
 	{
 			cout << "======================================================================" << endl;
-			cout << "LIST OF GAMING LIST PEOPLE ROUND 1\n";
+			cout << "LIST OF GAMING LIST PEOPLE\n";
 
 			printingfxn(gaminglist);
 
@@ -758,15 +823,15 @@ int main() {
 
 	sort(filelist.students.begin(), filelist.students.end(), sortbyGPA());
 
-	srand(time(0)); //This is to set a random seed for the RNG (random number generator)
+	srand(time(0)); 
 	if (filelist.students.size() != 0)
 	{
 		do {
-			int rng = rand() % 6; //randomly sets a number from 0 to 5
+			int rng = rand() % 6; 
 			switch (rng)
 			{
-			case 0: //case when rolled for Dancing (number = 0)
-				//Code for assigning student into dancing (Not yet implimented)
+			case 0: 
+				
 				if (dancinglist.size() < Dancingvacancies)
 				{
 					dancinglist.push_back(filelist.students.back());
@@ -783,8 +848,8 @@ int main() {
 					break;
 				}
 
-			case 1: //case when rolled for Tennis (number = 1)
-				//Code for assigning student into tennis (Not yet implimented)
+			case 1:
+				
 				if (tennislist.size() < Tennisvacancies)
 				{
 					tennislist.push_back(filelist.students.back());
@@ -801,8 +866,8 @@ int main() {
 					break;
 				}
 
-			case 2: //case when rolled for Gaming (number = 2)
-				//Code for assigning student into gaming (Not yet implimented)
+			case 2:
+				
 				if (gaminglist.size() < Gamingvacancies)
 				{
 					gaminglist.push_back(filelist.students.back());
@@ -819,8 +884,8 @@ int main() {
 					break;
 				}
 
-			case 3: //case when rolled for Running (number = 3)
-				//Code for assigning student into running (Not yet implimented)
+			case 3: 
+				
 				if (runninglist.size() < Runningvacancies)
 				{
 					runninglist.push_back(filelist.students.back());
@@ -837,8 +902,8 @@ int main() {
 					break;
 				}
 
-			case 4: //case when rolled for Swimming (number = 4)
-				//Code for assigning student into swimming (Not yet implimented)
+			case 4: 
+				
 				if (swimminglist.size() < Swimmingvacancies)
 				{
 					swimminglist.push_back(filelist.students.back());
@@ -855,8 +920,8 @@ int main() {
 					break;
 				}
 
-			case 5: //case when rolled for Chess (number =5)
-				//Code for assigning student into chess (Not yet implimented)
+			case 5: 
+				
 				if (chesslist.size() < Chessvacancies)
 				{
 					chesslist.push_back(filelist.students.back());
@@ -873,7 +938,7 @@ int main() {
 					break;
 				}
 
-			default: //default case when RNG doesnt go right.. Should not be the case
+			default: 
 				cout << "Error in the random number genrator.. Please check Round 5's code" << endl;
 				break;
 
