@@ -950,7 +950,7 @@ int main() {
 	cout << "No more people to assign for Round 5!" << endl << endl;
 	}
 
-	cout << "Final list" << endl;
+	cout << "\n\nFinal list" << endl;
 	cout << "======================================================================" << endl;
 	cout << "LIST OF GAMING LIST PEOPLE \n";
 
@@ -980,6 +980,8 @@ int main() {
 	cout << "LIST OF TENNIS LIST PEOPLE \n";
 
 	printingfxn(tennislist);
+
+	cout << endl << endl;
 
 
 	system("pause");
