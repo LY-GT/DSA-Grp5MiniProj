@@ -259,12 +259,7 @@ void studentlist::remainding_vector3(vector<student_class> &studentlist,
 			{	
 				return;
 			}
-			else
-			{
-				student_it = student_it + count;
-				student_it++;
-				count++;
-			}
+			
 		}
 
 		else if (check_same(*it, *student_it))
