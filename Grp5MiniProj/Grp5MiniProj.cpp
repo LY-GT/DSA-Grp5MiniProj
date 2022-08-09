@@ -93,7 +93,7 @@ void printingfxn(vector<student_class> toprint){
 struct sortbyGPA
 {
 	bool operator () (student_class& A, student_class& B) {
-		return (A.getGPA() > B.getGPA());
+		return (A.getGPA() < B.getGPA());
 	}
 	
 };
