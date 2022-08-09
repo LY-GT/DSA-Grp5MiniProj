@@ -357,7 +357,7 @@ int main() {
 		}
 	}
 
-	cout << "No. of students with win records in special sport: " << count << endl;
+	cout << "No. of students with win records in special sport: " << specialcca << " " << count << endl;
 	//Checking chesscca for special students (students with wins in the special sport)
 	//if vectorsize > vacacny
 
@@ -418,7 +418,7 @@ int main() {
 
 	cout << endl;
 	vector<student_class> removal;
-
+	
 	cout << "=====================================" << endl;
 	//Sorts by no.wins
 	while (bool ender = true) {
@@ -528,10 +528,15 @@ int main() {
 		}
 	}
 
+	cout << "=====================================" << endl;
+	int added = 3 - count;
+	cout << added << " students stolen! " << endl;
+	cout << "The students stolen are: " << endl;
+	printingfxn(removal);
 	if (!removal.empty() && specialcca != ChessCCA) filelist.remainding_vector3(chesslist, removal);
-	if (!removal.empty() && specialcca != GamingCCA) { filelist.remainding_vector3(gaminglist, removal);  }
-	if (!removal.empty() && specialcca != SwimmingCCA) { filelist.remainding_vector3(swimminglist, removal); }
-	if (!removal.empty() && specialcca != DancingCCA) { filelist.remainding_vector3(dancinglist, removal);  }
+	if (!removal.empty() && specialcca != GamingCCA) filelist.remainding_vector3(gaminglist, removal);  
+	if (!removal.empty() && specialcca != SwimmingCCA) filelist.remainding_vector3(swimminglist, removal); 
+	if (!removal.empty() && specialcca != DancingCCA)  filelist.remainding_vector3(dancinglist, removal);  
 	if (!removal.empty() && specialcca != RunningCCA) filelist.remainding_vector3(runninglist, removal);
 	if (!removal.empty() && specialcca != TennisCCA) filelist.remainding_vector3(tennislist, removal);
 
