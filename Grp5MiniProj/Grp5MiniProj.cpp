@@ -62,6 +62,7 @@ bool round2endsort(student_class& s1, student_class& s2)
 		return false;
 	}
 	else if (s1wins = s2wins) {
+		
 		return sortingfunctionGPA(s1, s2);
 	}
 	else
@@ -70,9 +71,13 @@ bool round2endsort(student_class& s1, student_class& s2)
 
 bool sortingfunctionGPA(student_class& s1, student_class& s2) {
 	if (s1.getGPA() < s2.getGPA())
+	{
 		return false;
-	else
+	}
+	else 
+	{
 		return true;
+	}
 }
 
 void printingfxn(vector<student_class> toprint){
@@ -514,6 +519,7 @@ int main() {
 					break;
 				}
 			}
+			
 			sort(swimminglist.begin(), swimminglist.end(), round2endsort);
 			while (swimminglist.size() > Swimmingvacancies)
 				swimminglist.pop_back();
@@ -522,18 +528,20 @@ int main() {
 		}
 	}
 
-	if (!removal.empty()) filelist.remainding_vector3(chesslist, removal); 
-	if (!removal.empty()) filelist.remainding_vector3(gaminglist, removal); 
-	if (!removal.empty()) filelist.remainding_vector3(swimminglist, removal);
-	if (!removal.empty()) filelist.remainding_vector3(dancinglist, removal);
-	if (!removal.empty()) filelist.remainding_vector3(runninglist, removal);
-	if (!removal.empty()) filelist.remainding_vector3(tennislist, removal);
+	if (!removal.empty() && specialcca != ChessCCA) filelist.remainding_vector3(chesslist, removal);
+	if (!removal.empty() && specialcca != GamingCCA) { filelist.remainding_vector3(gaminglist, removal);  }
+	if (!removal.empty() && specialcca != SwimmingCCA) { filelist.remainding_vector3(swimminglist, removal); }
+	if (!removal.empty() && specialcca != DancingCCA) { filelist.remainding_vector3(dancinglist, removal);  }
+	if (!removal.empty() && specialcca != RunningCCA) filelist.remainding_vector3(runninglist, removal);
+	if (!removal.empty() && specialcca != TennisCCA) filelist.remainding_vector3(tennislist, removal);
 
 
 
 	cout << "=====================================" << endl;
 	cout << "\n----Updated " << specialcca << " list--------\n";
 	printingfxn(checkervector);
+
+
 
 
 

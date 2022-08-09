@@ -257,12 +257,12 @@ void studentlist::remainding_vector3(vector<student_class> &studentlist,
 		if (check_same(*firstPickandWins.begin(), *student_it))
 		{
 			studentlist.erase(student_it);
+			firstPickandWins.erase(it);
 			it = firstPickandWins.begin();
 			student_it = studentlist.begin();
 
-			if (student_it + 1 + count == studentlist.end())
-			{
-				firstPickandWins.clear();
+			if (student_it + 1 + count == studentlist.end() || firstPickandWins.empty())
+			{	
 				return;
 			}
 			else
@@ -276,12 +276,12 @@ void studentlist::remainding_vector3(vector<student_class> &studentlist,
 		else if (check_same(*it, *student_it))
 		{
 			studentlist.erase(student_it);
+			firstPickandWins.erase(it);
 			it = firstPickandWins.begin();
 			student_it = studentlist.begin();
 
-			if (studentlist.empty())
+			if (studentlist.empty()|| firstPickandWins.empty())
 			{
-				firstPickandWins.clear();
 				return;
 
 			}
@@ -289,7 +289,6 @@ void studentlist::remainding_vector3(vector<student_class> &studentlist,
 		}
 		else if (it == firstPickandWins.end() - 1 && student_it == studentlist.end() - 1)
 		{
-			firstPickandWins.clear();
 			break;
 		}
 		else if (it == firstPickandWins.end() - 1)
@@ -299,7 +298,7 @@ void studentlist::remainding_vector3(vector<student_class> &studentlist,
 			it = firstPickandWins.begin();
 		}
 	}
-	firstPickandWins.clear();
+
 
 
 }
